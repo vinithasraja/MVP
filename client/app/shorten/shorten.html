@@ -48,6 +48,18 @@
       <span class="help-block" ng-show="userForm.phone.$error.required || userForm.phone.$error.number">Valid phone number is required</span>
       <span class="help-block" ng-show="((userForm.phone.$error.minlength || userForm.phone.$error.maxlength) && userForm.phone.$dirty) ">phone number please</span>
   </div>
+
+  <div class="form-group">
+    <label for="InputCusine">Cusine</label>
+      <input type="text" class="form-control"   id="inputCusine" name="cusine" placeholder="Enter cusine" ng-model="profile.cusine" >
+  </div>
+
+  <div class="form-group">
+    <label for="InputNum">Location</label>
+      <input type="string" class="form-control"  id="inputLocation" name="location" placeholder="Enter Location" ng-model="profile.location" >
+  </div>
+
+
   <button type="submit" class="btn btn-default" ng-click="addCustomer()">Submit</button>
 </form>
 
@@ -71,9 +83,9 @@
     <tt>Select Days = {{profile.days}}</tt><br/>
 
 
-      <h5>Location</h5>
-      <label for="inputLocation">Location</label>
-      <input type="text" class="form-control" name="inputLocation" placeholder="Enter location" ng-model="location" >
+      <h5>Time</h5>
+      <label for="inputTime"></label>
+      <input type="text" class="form-control" name="inputTime" placeholder="Enter time" ng-model="profile.time" >
 
 
 

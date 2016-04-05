@@ -1,6 +1,19 @@
 var Shorten = require('./shortenModel.js');
+var Yelp = require('yelp');
 
 // Create our necessary controller methods to perform all needed CRUD actions
+
+var yelp = new Yelp({
+  consumer_key: '1qnYs1-g7h9dWCOjQgSWPA',
+  consumer_secret: 'qGEBchcLiNkteTMIp8YjAinMJbc',
+  token: 'eyOf3gwI1TgdmXkkN92Iz7HczA_xERfF',
+  token_secret: 'kUegHvEm9LAXkrDlG0IyVA9o86w',
+});
+ 
+
+
+
+
 
 exports.createOne = function(req, res) {
  console.log(req.body);
@@ -12,6 +25,27 @@ exports.createOne = function(req, res) {
     }
     res.json(newCharacter);
   });
+};
+
+
+
+
+exports.createQuerry = function(req, res) {
+ console.log(req.body);
+  var location =req.body.location;
+  var cusine = req.body.cusine;
+
+  yelp.search({ term: cusine, location: location })
+    .then(function (data) {
+      console.log(data);
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+
+
+
+  //callback style for now else use promise
 };
 
 

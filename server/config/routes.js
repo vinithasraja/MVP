@@ -1,3 +1,4 @@
+var Yelp = require('yelp');
 var linksController = require('../links/linkController.js');
 var shortenController = require('../shorten/shortenController.js');
 
@@ -11,7 +12,7 @@ module.exports = function (app, express) {
   // authentication middleware used to decode token and made available on the request
   // app.use('/api/links', helpers.decode);
   app.get('/api/links', linksController.allLinks);
-   app.post('/api/shorten', shortenController.createOne);
+   app.post('/api/shorten', shortenController.createQuerry);
 
   // If a request is sent somewhee other than the routes above,
   // send it through our custom error handler
