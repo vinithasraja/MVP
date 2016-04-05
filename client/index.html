@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" ng-app="lunchbot">
+<head>
+  <meta charset="utf-8">
+  <title>Lunch-Bot</title>
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+   <link rel="stylesheet" type="text/css" href="styles/bootstrap-united.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="navbar" >
+    <div class="navbar-inner">
+      <a class="brand" href="#/">Lunch-Bot</a>
+      <ul class="nav">
+        <li ng-class="{active: routeIs('/')}"><a href="#/">Home</a></li>
+        <li ng-class="{active: routeIs('/signin')}"><a href="#/signin">Sign-in</a></li>
+        <li ng-class="{active: routeIs('/shorten')}"><a href="#/shorten">SetPreferences</a></li>
+      </ul>
+
+      <ul class="nav pull-right">
+        <li ng-class="{active: routeIs('/help')}"><a href="#/help">Help</a></li>
+      </ul>
+    </div>
+
+    <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
+    <div ng-view></div>
+
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+
+    <script src="app/auth/auth.js"></script>
+    <script src="app/links/links.js"></script>
+    <script src="app/shorten/shorten.js"></script>
+    <script src="app/services/services.js"></script>
+    <script src="app/app.js"></script>
+  </body>
+</html>

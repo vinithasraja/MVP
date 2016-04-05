@@ -1,0 +1,101 @@
+<div id='container'>
+<!-- Your code here -->
+
+  <nav class="navigation">
+    <ul>
+      <li>
+          <a href="#/links">Home</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="creator">
+    <form name='shortlyForm' ng-submit="addCustomer()" novalidate>
+      <input name='link' type="email"
+        ng-model="link.url"
+        placeholder="User profile email" required
+        ng-class="{'error': shortlyForm.$invalid && shortlyForm.$dirty}"/>
+
+      <button type="submit" value="Shorten" ng-disabled='shortlyForm.$invalid'>
+        add
+      </button>
+    </form>
+    <div ng-if='shortlyForm.link.$error.required && shortlyForm.$dirty' class="message">
+      <h2>Email required</h2>
+    </div>
+  </div>
+
+  <h2>USER PROFILE</h2>
+<form name="userForm" class="myForm" required>
+
+  <div class="form-group">
+    <label for="inputName">Name</label>
+    <input type="text" class="form-control" name="inputName" placeholder="Enter name" ng-model="profile.name" required>
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmail">Email address</label>
+    <input type="email" class="form-control" id="inputEmail" name='email' placeholder="Enter email" ng-model="profile.email" required>
+    <div class="error" ng-show="userForm.email.$invalid">Invalid:
+             <span ng-show="userForm.email.$error.required">Enter Email</span>
+             <span ng-show="userForm.email.$error.email">email is not in proper format.</span>
+         </div>
+  </div>
+
+   <div class="form-group">
+    <label for="InputNum">Contact number</label>
+      <input type="number" class="form-control" ng-minlength="10" ng-maxlength="10"  id="inputPhone" name="phone" placeholder="Phone" ng-model="profile.phone" ng-required="true">
+      <span class="help-block" ng-show="userForm.phone.$error.required || userForm.phone.$error.number">Valid phone number is required</span>
+      <span class="help-block" ng-show="((userForm.phone.$error.minlength || userForm.phone.$error.maxlength) && userForm.phone.$dirty) ">phone number please</span>
+  </div>
+  <button type="submit" class="btn btn-default" ng-click="addCustomer()">Submit</button>
+</form>
+
+
+<div class="row-fluid">
+
+  <div class="span3 fm-panel">
+    <h2>User Preferences</h4>
+
+    <form>
+
+      <h5>Day</h5>
+     <label for="multipleSelect">Select Days: </label><br>
+    <select name="multipleSelect" id="multipleSelect" ng-model="profile.user.days" multiple>
+      <option value="option-1">Monday</option>
+      <option value="option-2">Tuesday</option>
+      <option value="option-3">Wednesday</option>
+      <option value="option-3">Thursday</option>
+      <option value="option-3">Friday</option>
+    </select><br>
+    <tt>Select Days = {{profile.days}}</tt><br/>
+
+
+      <h5>Location</h5>
+      <label for="inputLocation">Location</label>
+      <input type="text" class="form-control" name="inputLocation" placeholder="Enter location" ng-model="location" >
+
+
+
+      <h5>Cuisine</h5>
+
+        <div fm-checkbox-list ng-model="cuisine">
+        <label ng-repeat="(name, title) in CUISINE_OPTIONS" class="checkbox">
+          <input type="checkbox" value="{{name}}"> {{title}}
+        </label>
+      </div>
+
+
+      <h5>Rating</h5>
+       <label for="inputRating">Rating</label>
+      <input type="text" class="form-control" name="inputRating" placeholder="Enter Rating" ng-model="rating" >
+
+
+      <h5>Price Range</h5>
+       <label for="inputPrice">Price</label>
+      <input type="text" class="form-control" name="inputPrice" placeholder="Enter Price" ng-model="price" >
+
+      
+      
+    </form>
+  </div>
